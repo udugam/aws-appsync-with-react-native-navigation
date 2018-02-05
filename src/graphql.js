@@ -19,13 +19,15 @@ export const FetchPosts = gql`query FetchPosts {
 //Declare your React Component level operations below
 export const operations = {
   CreatePost: graphql(CreatePost, {
-    options: {},
+    options: {
+      refetchQueries: [ { query: FetchPosts } ]
+    },
     props: props => ({
       createPost: (post) => {
         return props.mutate({
           variables: post,
           optimisticResponse: {
-            putUser: {...post,__typename: 'Post'}
+            putPost: {...post,__typename: 'Post'}
           }
         })
       }
@@ -33,7 +35,9 @@ export const operations = {
   }),
 
   FetchPosts: graphql(FetchPosts, {
-      options: {},
+      options: {
+        fetchPolicy: 'network-only'
+      },
       props: ({data}) => {
           return {
               loading: data.loading,
