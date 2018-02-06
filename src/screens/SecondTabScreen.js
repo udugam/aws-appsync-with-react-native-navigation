@@ -19,6 +19,7 @@ class SecondTabScreen extends Component {
                 <FlatList
                     data={this.props.posts}
                     renderItem={({item}) => <Text>{item.title}</Text>}
+                    keyExtractor={item=>item.id}
                 />
             </View>
         )
