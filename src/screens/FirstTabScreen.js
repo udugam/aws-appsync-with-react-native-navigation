@@ -29,9 +29,9 @@ class FirstTabScreen extends Component {
     }
 
     submitPost = () => {
-        const postID = uuidV4()
-        const postTitle = this.state.postTitle 
-        this.props.createPost({id:postID, title:postTitle})
+        const id = uuidV4()
+        const title = this.state.postTitle
+        this.props.createPost({id, title})
     }
 
     render() {

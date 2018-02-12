@@ -1,3 +1,6 @@
+XMLHttpRequest = GLOBAL.originalXMLHttpRequest ? 
+GLOBAL.originalXMLHttpRequest : GLOBAL.XMLHttpRequest;
+
 import { Navigation } from 'react-native-navigation';
 
 import { registerScreens } from './src/screens/index';
